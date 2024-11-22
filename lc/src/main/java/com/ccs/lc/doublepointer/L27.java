@@ -1,4 +1,4 @@
-package com.ccs.lc;
+package com.ccs.lc.doublepointer;
 
 /**
  * @date 2024/11/17 12:26 AM
