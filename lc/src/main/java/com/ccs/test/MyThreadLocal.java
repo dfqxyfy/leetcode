@@ -12,10 +12,10 @@ public class MyThreadLocal {
     static ThreadLocal<byte[]> threadLocal = new ThreadLocal<>();
     public static void main(String[] args) {
 
-        ExecutorService executorService = new ThreadPoolExecutor(100,100,100, TimeUnit.SECONDS,new ArrayBlockingQueue<>(885));
+        ExecutorService executorService = new ThreadPoolExecutor(2,10,1, TimeUnit.SECONDS,new ArrayBlockingQueue<>(2));
 
-        System.out.println(Thread.currentThread().getId()+" main Thread");
-        for(int i=0;i<100;i++) {
+        System.out.println(Thread.currentThread().getName()+" "+Thread.currentThread().getId()+" main Thread");
+        for(int i=0;i<1000;i++) {
             executorService.execute(
                 new Thread(){
                 @Override
@@ -28,6 +28,12 @@ public class MyThreadLocal {
                     byte[] b = new byte[50 * 1024 * 10240];
                     //threadLocal.set(b);
                     System.out.println(getName()+" "+getId()+" over...");
+                    try {
+                        Thread.sleep(50);
+                    } catch (InterruptedException e) {
+                        throw new RuntimeException(e);
+                    }
+                    System.out.println(getName()+" "+getId()+" over... -----------");
 
                 }
             }//.start();
