@@ -1,5 +1,8 @@
 package com.ccs.lc.binarytree;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 /**
  * @date 2024/11/22 5:13 PM
  */
@@ -46,6 +49,46 @@ public class InitTreeNode {
         Integer[] nums = new Integer[]{3,9,20,null,null,15,7};
         TreeNode treeNode = initTreeNode(nums);
         return treeNode;
+    }
+
+
+    public static TreeNode lcInit(Integer[] nums){
+        if(nums == null || nums.length == 0 ){
+            return null;
+        }
+        Queue<TreeNode> queue = new LinkedList<>();
+        int index = 0;
+        TreeNode treeNode = new TreeNode(nums[index++]);
+        queue.add(treeNode);
+
+        while(queue.size()>0){
+            int count = queue.size();
+            for(int i=0;i<count;i++){
+                TreeNode poll = queue.poll();
+                if(2*i+index >= nums.length){
+                    return treeNode;
+                }
+                if(nums[2*i+index] == null){
+                    poll.left = null;
+                }else{
+                    TreeNode temp = new TreeNode(nums[2*i+index]);
+                    poll.left = temp;
+                    queue.offer(temp);
+                }
+
+                if(nums[2*i+index+1] == null){
+                    poll.right = null;
+                }else{
+                    TreeNode temp = new TreeNode(nums[2*i+index+1]);
+                    poll.right = temp;
+                    queue.offer(temp);
+                }
+            }
+            index += 2*count;
+        }
+
+        return treeNode;
+
     }
 
     public static void main(String[] args) {

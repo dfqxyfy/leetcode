@@ -5,6 +5,7 @@ import java.util.LinkedList;
 
 /**
  * @date 2024/11/21 10:10 PM
+ *  逆波兰表达式求值
  */
 public class L150 {
     public int evalRPN(String[] tokens) {
@@ -22,13 +23,13 @@ public class L150 {
                         count = n1+n2;
                         break;
                     case "-":
-                        count = n1-n2;
+                        count = n2-n1;
                         break;
                     case "*":
                         count = n1*n2;
                         break;
                     case "/":
-                        count = n1/n2;
+                        count = n2/n1;
                         break;
                 }
                 stack.push(count);
@@ -47,5 +48,9 @@ public class L150 {
     public static void main(String[] args) {
         String[] nums = new String[]{"2","1","+","3","*"};
         System.out.println(new L150().evalRPN(nums));
+        nums = new String[]{"4","13","5","/","+"};
+        System.out.println(new L150().evalRPN(nums));
+
+
     }
 }
