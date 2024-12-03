@@ -14,7 +14,7 @@ public class ListNode {
 
 
     public static ListNode init1(){
-        ListNode node = new ListNode(1,new ListNode(2,new ListNode(3,new ListNode(4))));
+        ListNode node = new ListNode(1,new ListNode(2,new ListNode(3,new ListNode(4,new ListNode(5)))));
         return node;
     }
 
@@ -35,5 +35,9 @@ public class ListNode {
             node = node.next;
         }
         return strb.toString();
+    }
+
+    public ListNode mock1(){
+        return new ListNode(1,new ListNode(2,new ListNode(3,new ListNode(4,new ListNode(5)))));
     }
 }
