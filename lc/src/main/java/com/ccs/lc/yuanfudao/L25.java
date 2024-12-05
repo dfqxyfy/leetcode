@@ -1,7 +1,7 @@
 package com.ccs.lc.yuanfudao;
 
 import com.ccs.lc.ListNode;
-import javafx.util.Pair;
+import javafx.util .Pair;
 
 /**
  * @date 2024/12/2 19:02
