@@ -20,7 +20,7 @@ public class Pack {
             for(int j=1;j<=target;j++){
 
                 if(weight[i]<=j){
-                    dp[i][j] = Math.max(dp[i-1][j],dp[i-1][j-weight[i]]+value[i]);
+                    dp[i][j] = Math.max(dp[i-1][j],dp[i][j-weight[i]]+value[i]);
                 }else{
                     dp[i][j] = dp[i-1][j];
                 }
@@ -31,8 +31,8 @@ public class Pack {
 
     public static void main(String[] args) {
         int[] weight = new int[]{1,3,4};
-        int[] value = new int[]{15,20,30};
-        System.out.println(new Pack().maxValue(weight, value, 5));;
+        int[] value = new int[]{15,50,60};
+        System.out.println(new Pack().maxValue(weight, value, 10));;
 
     }
 }
